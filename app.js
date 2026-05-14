@@ -1,157 +1,85 @@
 /* ============================================================
-   CONFIGURACIÓN GENERAL
+   SLIDER DINÁMICO EDITABLE
    ============================================================ */
 
-const ADMIN_PASSWORD = "kodigo73_master";
+const SLIDER_KEY = "kodigo73_slider_videos";
+const sliderContainer = document.getElementById("dynamicSlider");
+const sliderEditor = document.getElementById("sliderEditor");
+const addVideoBtn = document.getElementById("addVideoBtn");
 
-/* ============================================================
-   SISTEMA DE PESTAÑAS
-   ============================================================ */
+let sliderVideos = [];
 
-const tabs = document.querySelectorAll(".nav-tab");
-const tabContents = document.querySelectorAll(".tab-content");
+// Cargar vídeos guardados
+function loadSliderVideos() {
+  const raw = localStorage.getItem(SLIDER_KEY);
+  sliderVideos = raw ? JSON.parse(raw) : [
+    "https://www.youtube.com/embed/dQw4w9WgXcQ"
+  ];
+  renderSlider();
+  renderEditor();
+}
 
-tabs.forEach((tab) => {
-  tab.addEventListener("click", () => {
-    const target = tab.getAttribute("data-tab");
+// Guardar vídeos
+function saveSliderVideos() {
+  localStorage.setItem(SLIDER_KEY, JSON.stringify(sliderVideos));
+  renderSlider();
+  renderEditor();
+}
 
-    tabs.forEach((t) => t.classList.remove("active"));
-    tab.classList.add("active");
+// Renderizar slider
+function renderSlider() {
+  sliderContainer.innerHTML = "";
+  sliderVideos.forEach(url => {
+    const card = document.createElement("div");
+    card.className = "video-card";
+    card.innerHTML = `<iframe src="${url}" allowfullscreen></iframe>`;
+    sliderContainer.appendChild(card);
+  });
+}
 
-    tabContents.forEach((section) => {
-      section.classList.toggle("active", section.id === target);
+// Renderizar editor admin
+function renderEditor() {
+  sliderEditor.innerHTML = "";
+
+  sliderVideos.forEach((url, index) => {
+    const row = document.createElement("div");
+    row.style.marginBottom = "10px";
+
+    row.innerHTML = `
+      <input type="text" value="${url}" data-index="${index}" class="slider-input" style="width:80%">
+      <button data-del="${index}" class="btn-danger">Eliminar</button>
+    `;
+
+    sliderEditor.appendChild(row);
+  });
+
+  // Editar URL
+  document.querySelectorAll(".slider-input").forEach(input => {
+    input.addEventListener("input", () => {
+      const i = input.dataset.index;
+      sliderVideos[i] = input.value;
+      saveSliderVideos();
     });
   });
-});
 
-/* ============================================================
-   PANEL ADMIN / BUILDER
-   ============================================================ */
-
-const adminTrigger = document.getElementById("adminTrigger");
-const adminPanel = document.getElementById("adminPanel");
-const exitAdminBtn = document.getElementById("exitAdmin");
-const resetContentBtn = document.getElementById("resetContent");
-
-let isAdmin = false;
-
-function enterAdminMode() {
-  document.body.classList.add("admin-mode");
-  adminPanel.classList.remove("hidden");
-  isAdmin = true;
-  enableEditable();
-}
-
-function exitAdminMode() {
-  document.body.classList.remove("admin-mode");
-  adminPanel.classList.add("hidden");
-  isAdmin = false;
-  disableEditable();
-}
-
-adminTrigger.addEventListener("click", () => {
-  if (isAdmin) {
-    exitAdminMode();
-    return;
-  }
-
-  const pass = prompt("Introduce la clave maestra de KODIGO_73:");
-  if (pass === ADMIN_PASSWORD) {
-    enterAdminMode();
-  } else if (pass !== null) {
-    alert("Clave incorrecta. Acceso denegado.");
-  }
-});
-
-exitAdminBtn.addEventListener("click", () => {
-  exitAdminMode();
-});
-
-/* ============================================================
-   CONTENIDO EDITABLE + LOCALSTORAGE (BUILDER)
-   ============================================================ */
-
-const editableElements = document.querySelectorAll(".editable");
-const STORAGE_KEY = "kodigo73_content";
-
-function loadContent() {
-  const raw = localStorage.getItem(STORAGE_KEY);
-  if (!raw) return;
-
-  try {
-    const data = JSON.parse(raw);
-    editableElements.forEach((el) => {
-      const key = el.dataset.key;
-      if (key && data[key] !== undefined) {
-        el.innerText = data[key];
-      }
+  // Eliminar vídeo
+  document.querySelectorAll("[data-del]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const i = btn.dataset.del;
+      sliderVideos.splice(i, 1);
+      saveSliderVideos();
     });
-  } catch (e) {
-    console.warn("No se pudo cargar el contenido guardado:", e);
-  }
-}
-
-function saveContent() {
-  const data = {};
-  editableElements.forEach((el) => {
-    const key = el.dataset.key;
-    if (key) {
-      data[key] = el.innerText;
-    }
-  });
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-}
-
-function enableEditable() {
-  editableElements.forEach((el) => {
-    el.setAttribute("contenteditable", "true");
-    el.addEventListener("input", saveContent);
   });
 }
 
-function disableEditable() {
-  editableElements.forEach((el) => {
-    el.removeAttribute("contenteditable");
-    el.removeEventListener("input", saveContent);
-  });
-}
-
-resetContentBtn.addEventListener("click", () => {
-  if (confirm("¿Seguro que quieres resetear todo el contenido editable?")) {
-    localStorage.removeItem(STORAGE_KEY);
-    window.location.reload();
+// Añadir vídeo
+addVideoBtn.addEventListener("click", () => {
+  const url = prompt("Introduce la URL del vídeo (YouTube embed):");
+  if (url) {
+    sliderVideos.push(url);
+    saveSliderVideos();
   }
 });
 
-// Cargar contenido guardado al iniciar
-loadContent();
-
-/* ============================================================
-   FORMULARIO DE CONTACTO (DEMO)
-   ============================================================ */
-
-const contactForm = document.querySelector(".contact-form");
-if (contactForm) {
-  contactForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    alert("Señal enviada (demo). Aquí podrías conectar un backend real.");
-  });
-}
-
-/* ============================================================
-   SLIDER TIPO NETFLIX
-   ============================================================ */
-
-const slider = document.querySelector(".video-slider");
-const btnLeft = document.querySelector(".left-btn");
-const btnRight = document.querySelector(".right-btn");
-
-if (slider && btnLeft && btnRight) {
-  btnLeft.addEventListener("click", () => {
-    slider.scrollBy({ left: -350, behavior: "smooth" });
-  });
-
-  btnRight.addEventListener("click", () => {
-    slider.scrollBy({ left: 350, behavior: "smooth" });
-  });
-}
+// Inicializar
+loadSliderVideos();
