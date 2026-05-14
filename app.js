@@ -1,6 +1,6 @@
 
 /* ============================================================
-   🔥 SLIDER DINÁMICO EDITABLE
+   🔥 SLIDER DINÁMICO + YOUTUBE IDS + LAZY LOADING
    ============================================================ */
 
 const SLIDER_KEY = "kodigo73_slider_videos";
@@ -10,55 +10,87 @@ const addVideoBtn = document.getElementById("addVideoBtn");
 
 let sliderVideos = [];
 
-// Cargar vídeos guardados
+/* ============================================================
+   📌 Convertir ID → URL embed
+   ============================================================ */
+function yt(id) {
+  return `https://www.youtube.com/embed/${id}`;
+}
+
+/* ============================================================
+   📌 Lazy Loading de iframes
+   ============================================================ */
+function createLazyIframe(url) {
+  const iframe = document.createElement("iframe");
+  iframe.setAttribute("loading", "lazy");
+  iframe.setAttribute("allowfullscreen", "");
+  iframe.src = url;
+  return iframe;
+}
+
+/* ============================================================
+   📌 Cargar vídeos guardados
+   ============================================================ */
 function loadSliderVideos() {
   const raw = localStorage.getItem(SLIDER_KEY);
-  sliderVideos = raw ? JSON.parse(raw) : [
-    "https://www.youtube.com/embed/dQw4w9WgXcQ"
-  ];
+
+  sliderVideos = raw
+    ? JSON.parse(raw)
+    : ["dQw4w9WgXcQ"]; // Solo IDs, no URLs
+
   renderSlider();
   renderEditor();
 }
 
-// Guardar vídeos
+/* ============================================================
+   📌 Guardar vídeos
+   ============================================================ */
 function saveSliderVideos() {
   localStorage.setItem(SLIDER_KEY, JSON.stringify(sliderVideos));
   renderSlider();
   renderEditor();
 }
 
-// Renderizar slider
+/* ============================================================
+   📌 Renderizar slider
+   ============================================================ */
 function renderSlider() {
   sliderContainer.innerHTML = "";
-  sliderVideos.forEach(url => {
+
+  sliderVideos.forEach(id => {
     const card = document.createElement("div");
     card.className = "video-card";
-    card.innerHTML = `<iframe src="${url}" allowfullscreen></iframe>`;
+
+    const iframe = createLazyIframe(yt(id));
+    card.appendChild(iframe);
+
     sliderContainer.appendChild(card);
   });
 }
 
-// Renderizar editor admin
+/* ============================================================
+   📌 Editor Admin
+   ============================================================ */
 function renderEditor() {
   sliderEditor.innerHTML = "";
 
-  sliderVideos.forEach((url, index) => {
+  sliderVideos.forEach((id, index) => {
     const row = document.createElement("div");
     row.style.marginBottom = "10px";
 
     row.innerHTML = `
-      <input type="text" value="${url}" data-index="${index}" class="slider-input" style="width:80%">
+      <input type="text" value="${id}" data-index="${index}" class="slider-input" style="width:80%">
       <button data-del="${index}" class="btn-danger">Eliminar</button>
     `;
 
     sliderEditor.appendChild(row);
   });
 
-  // Editar URL
+  // Editar ID
   document.querySelectorAll(".slider-input").forEach(input => {
     input.addEventListener("input", () => {
       const i = input.dataset.index;
-      sliderVideos[i] = input.value;
+      sliderVideos[i] = input.value.trim();
       saveSliderVideos();
     });
   });
@@ -73,14 +105,18 @@ function renderEditor() {
   });
 }
 
-// Añadir vídeo
+/* ============================================================
+   📌 Añadir vídeo (solo ID)
+   ============================================================ */
 addVideoBtn.addEventListener("click", () => {
-  const url = prompt("Introduce la URL del vídeo (YouTube embed):");
-  if (url) {
-    sliderVideos.push(url);
+  const id = prompt("Introduce el ID del vídeo de YouTube:");
+  if (id && id.length > 5) {
+    sliderVideos.push(id.trim());
     saveSliderVideos();
   }
 });
 
-// Inicializar
+/* ============================================================
+   📌 Inicializar
+   ============================================================ */
 loadSliderVideos();
