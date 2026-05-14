@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KODIGO_73 – Plataforma de rap combativo</title>
+  <title>KODIGO_73</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-  <!-- Fondos -->
+
+  <!-- Fondo -->
   <div class="bg-noise"></div>
   <div class="bg-cage"></div>
 
@@ -15,10 +17,10 @@
   <header class="header">
     <div class="logo-area">
       <div class="logo-wrapper">
-        <img src="assets/logo-kodigo73.png" alt="KODIGO_73 Logo" class="logo-img" />
+        <img src="logo-kodigo73.png" class="logo-img" />
       </div>
       <div class="brand-text">
-        <span class="brand-top">Plataforma de rap combativo</span>
+        <span class="brand-top">Plataforma</span>
         <span class="brand-main">KODIGO_73</span>
         <span class="brand-bottom">El rap no se toca</span>
       </div>
@@ -27,219 +29,118 @@
     <nav class="nav">
       <button class="nav-tab active" data-tab="operaciones">Operaciones</button>
       <button class="nav-tab" data-tab="batallas">Batallas</button>
-      <button class="nav-tab" data-tab="archivos">Archivos</button>
+      <button class="nav-tab" data-tab="archivo">Archivo</button>
       <button class="nav-tab" data-tab="contacto">Contacto</button>
     </nav>
 
-    <div class="header-right">
-      <button id="adminTrigger" class="admin-trigger" title="Acceso oculto">●</button>
-    </div>
+    <div id="adminTrigger" class="admin-trigger"></div>
   </header>
+
+  <!-- Panel Admin -->
+  <div id="adminPanel" class="admin-panel hidden">
+    <h3>Panel Maestro KODIGO_73</h3>
+    <button id="exitAdmin" class="btn-secondary">Salir de admin</button>
+    <button id="resetContent" class="btn-danger">Resetear contenido</button>
+
+    <!-- 🔥 NUEVA SECCIÓN: EDITOR DEL SLIDER -->
+    <div class="admin-section">
+      <h3>Gestión del Slider</h3>
+      <div id="sliderEditor"></div>
+      <button id="addVideoBtn" class="btn-secondary">Añadir vídeo</button>
+    </div>
+  </div>
 
   <!-- Hero -->
   <section class="hero">
     <div class="hero-inner">
-      <h1 class="hero-title glitch" data-text="RAP DE COMBATE">
-        RAP DE COMBATE
-      </h1>
-      <p class="hero-subtitle editable" data-key="hero-sub">
-        Inconformismo, contacto, calle. Sin miedo, sin perdón, sin pausa.
+      <h1 class="hero-title editable" data-key="hero-title">Operaciones Urbanas</h1>
+      <p class="hero-subtitle editable" data-key="hero-subtitle">
+        Misiones de calle, golpes sonoros, tácticas de combate en formato rap.
       </p>
-      <div class="hero-tags">
-        <span class="hero-tag">MMA</span>
-        <span class="hero-tag">Batallas</span>
-        <span class="hero-tag">Underground</span>
-        <span class="hero-tag">Neón</span>
-      </div>
     </div>
   </section>
 
+  <!-- Main -->
   <main class="main">
-    <!-- PANEL ADMIN / BUILDER -->
-    <section id="adminPanel" class="admin-panel hidden">
-      <div class="admin-inner">
-        <h2>Panel Maestro KODIGO_73</h2>
-        <p>Modo edición activo. Todo lo que modifiques se guarda en este navegador.</p>
-        <div class="admin-actions">
-          <button id="exitAdmin" class="btn-secondary">Salir de admin</button>
-          <button id="resetContent" class="btn-danger">Resetear contenido</button>
-        </div>
-      </div>
-    </section>
 
     <!-- OPERACIONES -->
     <section id="operaciones" class="tab-content active">
-      <h2 class="section-title glitch" data-text="OPERACIONES URBANAS">OPERACIONES URBANAS</h2>
-      <p class="subtitle neon-red editable" data-key="operaciones-sub">
-        Misiones de calle, golpes sonoros, tácticas de combate en formato rap.
-      </p>
+      <h2 class="section-title">Operaciones Urbanas</h2>
 
       <div class="grid">
-        <article class="card editable" data-key="op-criticas">
-          <h3>Operaciones críticas</h3>
-          <p>Misiones de alto riesgo en la jungla de asfalto. Solo para mentes frías.</p>
-          <span class="tag tag-live">En vivo</span>
-        </article>
-
-        <article class="card editable" data-key="asaltos-calle">
-          <h3>Asaltos de calle</h3>
-          <p>Golpes quirúrgicos en la noche, rimas como armas, beats como detonadores.</p>
-          <span class="tag">Archivo</span>
-        </article>
-
-        <article class="card editable" data-key="guerra-raps">
-          <h3>Guerra de raps</h3>
-          <p>Batallas verbales sin censura. Solo sobreviven los códigos más duros.</p>
-          <span class="tag tag-live">En vivo</span>
-        </article>
-
-        <article class="card editable" data-key="combate-brutal">
-          <h3>Combate brutal</h3>
-          <p>Sesiones extremas donde el micrófono es la única salida.</p>
-          <span class="tag">Subterráneo</span>
-        </article>
-      </div>
-
-      <!-- Slider tipo Netflix -->
-      <h3 class="section-subtitle glitch" data-text="GALERÍA DE VIDEOS">GALERÍA DE VIDEOS</h3>
-
-      <div class="video-slider-container">
-        <button class="slider-btn left-btn">⟨</button>
-
-        <div class="video-slider">
-          <div class="video-card">
-            <iframe src="https://www.youtube.com/embed/2vjPBrBU-TM" allowfullscreen></iframe>
-          </div>
-          <div class="video-card">
-            <iframe src="https://www.youtube.com/embed/uelHwf8o7_U" allowfullscreen></iframe>
-          </div>
-          <div class="video-card">
-            <iframe src="https://www.youtube.com/embed/hTWKbfoikeg" allowfullscreen></iframe>
-          </div>
-          <div class="video-card">
-            <iframe src="https://www.youtube.com/embed/fJ9rUzIMcZQ" allowfullscreen></iframe>
-          </div>
+        <div class="card">
+          <h3 class="editable" data-key="op1-title">Operaciones críticas</h3>
+          <p class="editable" data-key="op1-text">
+            Misiones de alto riesgo en la jungla de asfalto. Solo para mentes frías. En vivo.
+          </p>
         </div>
 
-        <button class="slider-btn right-btn">⟩</button>
+        <div class="card">
+          <h3 class="editable" data-key="op2-title">Asaltos de calle</h3>
+          <p class="editable" data-key="op2-text">
+            Golpes quirúrgicos en la noche, rimas como armas, beats como detonadores. Archivo.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 class="editable" data-key="op3-title">Guerra de raps</h3>
+          <p class="editable" data-key="op3-text">
+            Batallas verbales sin censura. Solo sobreviven los códigos más duros. En vivo.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 class="editable" data-key="op4-title">Combate brutal</h3>
+          <p class="editable" data-key="op4-text">
+            Sesiones extremas donde el micrófono es la única salida. Subterráneo.
+          </p>
+        </div>
+      </div>
+
+      <!-- 🔥 SLIDER DINÁMICO -->
+      <h2 class="section-subtitle">Galería de Videos</h2>
+
+      <div class="video-slider-container">
+        <button class="slider-btn left-btn">&#10094;</button>
+
+        <div class="video-slider" id="dynamicSlider"></div>
+
+        <button class="slider-btn right-btn">&#10095;</button>
       </div>
     </section>
 
-    <!-- BATALLAS -->
+    <!-- Otras pestañas -->
     <section id="batallas" class="tab-content">
-      <h2 class="section-title glitch" data-text="BATALLAS DE CONTACTO">BATALLAS DE CONTACTO</h2>
-      <p class="subtitle neon-purple editable" data-key="batallas-sub">
-        Línea frontal del sonido: cada barra es un impacto, cada punchline un directo a la mandíbula.
-      </p>
-
-      <div class="grid">
-        <article class="card editable" data-key="batalla-resistencia">
-          <h3>Batalla de resistencia</h3>
-          <p>Rounds infinitos, solo aguanta quien respira ritmo y aguanta presión.</p>
-          <span class="tag tag-live">En vivo</span>
-        </article>
-
-        <article class="card editable" data-key="batalla-jaula">
-          <h3>Batalla en jaula</h3>
-          <p>Formato cerrado, valla MMA, público encima, cero escapatoria.</p>
-          <span class="tag">Jaula</span>
-        </article>
-
-        <article class="card editable" data-key="batalla-subsuelo">
-          <h3>Subsuelo extremo</h3>
-          <p>Batallas clandestinas, sin jueces, solo respeto y cicatrices.</p>
-          <span class="tag">Subterráneo</span>
-        </article>
-
-        <article class="card editable" data-key="batalla-elite">
-          <h3>Élite de contacto</h3>
-          <p>Solo entran los que ya han sobrevivido a varias guerras de raps.</p>
-          <span class="tag tag-live">Clasificatoria</span>
-        </article>
-      </div>
+      <h2 class="section-title">Batallas</h2>
     </section>
 
-    <!-- ARCHIVOS -->
-    <section id="archivos" class="tab-content">
-      <h2 class="section-title glitch" data-text="ARCHIVOS CLASIFICADOS">ARCHIVOS CLASIFICADOS</h2>
-      <p class="subtitle neon-cyan editable" data-key="archivos-sub">
-        Protocolos prohibidos, sesiones ocultas y material no apto para la superficie.
-      </p>
-
-      <div class="grid grid-archives">
-        <article class="card slim editable" data-key="archivo-1">
-          <h3>Código 73 – Ritmo de asalto</h3>
-          <p>Compilación de beats diseñados para romper altavoces y cuellos.</p>
-        </article>
-
-        <article class="card slim editable" data-key="archivo-2">
-          <h3>Entrevista desde el subsuelo</h3>
-          <p>Conversaciones con voces que no verás en la TV ni en portadas limpias.</p>
-        </article>
-
-        <article class="card slim editable" data-key="archivo-3">
-          <h3>Operaciones en garaje</h3>
-          <p>Sesiones privadas, humo denso, luces rojas y metal oxidado.</p>
-        </article>
-
-        <article class="card slim editable" data-key="archivo-4">
-          <h3>Protocolos prohibidos</h3>
-          <p>Guías tácticas para sobrevivir en la ciudad hostil y en el circuito.</p>
-        </article>
-      </div>
+    <section id="archivo" class="tab-content">
+      <h2 class="section-title">Archivo</h2>
     </section>
 
-    <!-- CONTACTO -->
     <section id="contacto" class="tab-content">
-      <h2 class="section-title glitch" data-text="CONTACTO SUBTERRÁNEO">CONTACTO SUBTERRÁNEO</h2>
-      <p class="subtitle neon-green editable" data-key="contacto-sub">
-        Si tienes código, encuentras la frecuencia. Si no, esto no es para ti.
-      </p>
+      <h2 class="section-title">Contacto</h2>
 
       <form class="contact-form">
         <div class="form-group">
-          <label for="nombre">Alias</label>
-          <input type="text" id="nombre" placeholder="Tu nombre de guerra" />
+          <label>Nombre</label>
+          <input type="text" />
         </div>
+
         <div class="form-group">
-          <label for="email">Canal seguro</label>
-          <input type="email" id="email" placeholder="tu@kodigo73.com" />
+          <label>Mensaje</label>
+          <textarea></textarea>
         </div>
-        <div class="form-group">
-          <label for="mensaje">Mensaje cifrado</label>
-          <textarea id="mensaje" rows="4" placeholder="Deja tu rastro aquí..."></textarea>
-        </div>
-        <button type="submit" class="btn-primary">Enviar señal</button>
+
+        <button class="btn-primary">Enviar</button>
       </form>
     </section>
 
-    <!-- VIDEOTECA FINAL -->
-    <section class="videoteca">
-      <h2 class="section-title glitch" data-text="VIDEOTECA OFICIAL">VIDEOTECA OFICIAL</h2>
-      <p class="subtitle neon-red editable" data-key="videoteca-sub">
-        Clips, sesiones, directos y material exclusivo de KODIGO_73.
-      </p>
-
-      <div class="videoteca-grid">
-        <div class="video-thumb">
-          <iframe src="https://www.youtube.com/embed/2vjPBrBU-TM" allowfullscreen></iframe>
-        </div>
-        <div class="video-thumb">
-          <iframe src="https://www.youtube.com/embed/uelHwf8o7_U" allowfullscreen></iframe>
-        </div>
-        <div class="video-thumb">
-          <iframe src="https://www.youtube.com/embed/hTWKbfoikeg" allowfullscreen></iframe>
-        </div>
-        <div class="video-thumb">
-          <iframe src="https://www.youtube.com/embed/fJ9rUzIMcZQ" allowfullscreen></iframe>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer class="footer">
-    <span>© KODIGO_73 – Plataforma de rap combativo.</span>
-    <span class="footer-right">Neones, jaula, ruido y resistencia.</span>
+    <span>KODIGO_73 — Plataforma de rap combativo</span>
+    <span>El rap no se toca</span>
   </footer>
 
   <script src="app.js"></script>
