@@ -1,0 +1,11 @@
+
+// Ejemplo genérico dentro de tu builder.js
+builder.registerPage({
+  id: 'kodigo',
+  title: 'Kodigo',
+  isHome: true,
+  mount: () => {
+    // Mostrar sección #page-kodigo y ocultar el resto
+    document.querySelector('#page-kodigo')?.classList.add('is-active');
+  }
+});

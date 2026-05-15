@@ -1,0 +1,44 @@
+
+<!-- Página de inicio: KODIGO -->
+<section id="page-kodigo" class="kodigo-hero">
+  <div class="kodigo-overlay"></div>
+
+  <div class="kodigo-content">
+    <img src="assets/logo-kodigo73.png" alt="Plataforma Kódigo 73" class="kodigo-logo">
+
+    <h1 class="kodigo-slogan">EL RAP NO SE TOCA</h1>
+
+    <article class="kodigo-comunicado">
+      <h2>Comunicado Oficial de la Plataforma Kódigo 73</h2>
+
+      <p>
+        El HIP-HOP nació como una respuesta colectiva a la exclusión, a la desigualdad, al racismo y a la
+        violencia sistémica. Surgió en comunidades marginadas y en los barrios obreros como una forma de
+        expresión, resistencia, identidad y supervivencia cultural.
+      </p>
+
+      <p>
+        El HIP-HOP es memoria, es barrio, es comunidad. Es rap, es graffiti, es djing y break dance, pero
+        también es conciencia social, transmisión de valores y construcción de espacios de dignidad allí
+        donde no los había.
+      </p>
+
+      <p>
+        Esta plataforma cultural nace para defender ese origen, para preservar la esencia histórica, social y
+        política del HIP-HOP y para protegerlo de toda forma de racismo, fascismo, exclusión y apropiación
+        indebida. Rechazamos el uso del HIP-HOP como disfraz vacío, como herramienta de odio o como
+        mercancía desprovista de contexto y respeto.
+      </p>
+
+      <p>
+        Defendemos una cultura HIP-HOP antirracista, antifascista, inclusiva y consciente, donde no haya
+        espacio para discursos de odio ni para el intrusismo que borra o tergiversa los valores construidos
+        por esta cultura con su vida, su arte y su lucha.
+      </p>
+
+      <p class="kodigo-firma">
+        Plataforma Kódigo 73
+      </p>
+    </article>
+  </div>
+</section>

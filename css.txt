@@ -1,0 +1,131 @@
+/* Página Kodigo: full screen */
+#page-kodigo.kodigo-hero {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("assets/bg-kodigo73-fondo.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  color: #fff;
+  font-family: 'Oswald', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Overlay oscuro + rojo */
+.kodigo-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(255, 0, 0, 0.35), transparent 55%),
+              rgba(0, 0, 0, 0.78);
+  z-index: 1;
+}
+
+/* Contenido centrado */
+.kodigo-content {
+  position: relative;
+  z-index: 2;
+  max-width: 960px;
+  width: 100%;
+  padding: 3rem 1.5rem 4rem;
+  text-align: center;
+}
+
+/* Logo nuevo */
+.kodigo-logo {
+  width: 260px;
+  max-width: 60vw;
+  margin: 0 auto 1.5rem;
+  display: block;
+  filter: drop-shadow(0 0 18px #ff1a1a);
+}
+
+/* Slogan principal */
+.kodigo-slogan {
+  font-family: 'Bebas Neue', system-ui, sans-serif;
+  font-size: 3rem;
+  letter-spacing: 0.12em;
+  color: #ff2b2b;
+  text-shadow: 0 0 10px #ff2b2b, 0 0 25px #ff0000;
+  margin-bottom: 2.5rem;
+  text-transform: uppercase;
+}
+
+/* Caja del comunicado */
+.kodigo-comunicado {
+  background: rgba(0, 0, 0, 0.78);
+  border: 2px solid #ff1a1a;
+  box-shadow: 0 0 22px rgba(255, 0, 0, 0.8);
+  padding: 2.5rem 2rem;
+  margin: 0 auto;
+  max-height: 60vh;
+  overflow-y: auto;
+  text-align: left;
+  position: relative;
+}
+
+/* Borde grafitero */
+.kodigo-comunicado::before,
+.kodigo-comunicado::after {
+  content: "";
+  position: absolute;
+  height: 3px;
+  width: 80px;
+  background: linear-gradient(90deg, transparent, #ff1a1a, transparent);
+  top: 14px;
+}
+.kodigo-comunicado::before {
+  left: 18px;
+}
+.kodigo-comunicado::after {
+  right: 18px;
+}
+
+/* Título del comunicado */
+.kodigo-comunicado h2 {
+  font-family: 'Bebas Neue', system-ui, sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ff3b3b;
+  text-align: center;
+  margin-bottom: 1.8rem;
+  text-shadow: 0 0 8px #ff0000;
+}
+
+/* Texto del comunicado */
+.kodigo-comunicado p {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  color: #f5f5f5;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.9);
+}
+
+/* Firma */
+.kodigo-firma {
+  margin-top: 1.8rem;
+  font-family: 'Bebas Neue', system-ui, sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: right;
+  color: #ff4b4b;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .kodigo-slogan {
+    font-size: 2.2rem;
+  }
+  .kodigo-comunicado {
+    padding: 2rem 1.4rem;
+    max-height: 65vh;
+  }
+  .kodigo-comunicado h2 {
+    font-size: 1.5rem;
+  }
+}
