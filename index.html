@@ -1,148 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KODIGO_73</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <title>Kódigo73</title>
+  <link rel="stylesheet" href="css/main.css">
 </head>
-
 <body>
-
-  <!-- Fondo -->
-  <div class="bg-noise"></div>
-  <div class="bg-cage"></div>
-
-  <!-- Header -->
-  <header class="header">
-    <div class="logo-area">
-      <div class="logo-wrapper">
-        <img src="logo-kodigo73.png" class="logo-img" />
-      </div>
-      <div class="brand-text">
-        <span class="brand-top">Plataforma</span>
-        <span class="brand-main">KODIGO_73</span>
-        <span class="brand-bottom">El rap no se toca</span>
-      </div>
-    </div>
-
-    <nav class="nav">
-      <button class="nav-tab active" data-tab="operaciones">Operaciones</button>
-      <button class="nav-tab" data-tab="batallas">Batallas</button>
-      <button class="nav-tab" data-tab="archivo">Archivo</button>
-      <button class="nav-tab" data-tab="contacto">Contacto</button>
+  <header>
+    <h1>Kódigo73</h1>
+    <nav>
+      <a href="pages/feed.html">Feed</a>
+      <a href="login.html">Login</a>
+      <a href="registro.html">Registro</a>
+      <a href="pages/admin.html">Admin</a>
     </nav>
-
-    <div id="adminTrigger" class="admin-trigger"></div>
   </header>
 
-  <!-- Panel Admin -->
-  <div id="adminPanel" class="admin-panel hidden">
-    <h3>Panel Maestro KODIGO_73</h3>
-    <button id="exitAdmin" class="btn-secondary">Salir de admin</button>
-    <button id="resetContent" class="btn-danger">Resetear contenido</button>
-
-    <!-- 🔥 NUEVA SECCIÓN: EDITOR DEL SLIDER -->
-    <div class="admin-section">
-      <h3>Gestión del Slider</h3>
-      <div id="sliderEditor"></div>
-      <button id="addVideoBtn" class="btn-secondary">Añadir vídeo</button>
-    </div>
-  </div>
-
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-inner">
-      <h1 class="hero-title editable" data-key="hero-title">Operaciones Urbanas</h1>
-      <p class="hero-subtitle editable" data-key="hero-subtitle">
-        Misiones de calle, golpes sonoros, tácticas de combate en formato rap.
-      </p>
-    </div>
-  </section>
-
-  <!-- Main -->
-  <main class="main">
-
-    <!-- OPERACIONES -->
-    <section id="operaciones" class="tab-content active">
-      <h2 class="section-title">Operaciones Urbanas</h2>
-
-      <div class="grid">
-        <div class="card">
-          <h3 class="editable" data-key="op1-title">Operaciones críticas</h3>
-          <p class="editable" data-key="op1-text">
-            Misiones de alto riesgo en la jungla de asfalto. Solo para mentes frías. En vivo.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3 class="editable" data-key="op2-title">Asaltos de calle</h3>
-          <p class="editable" data-key="op2-text">
-            Golpes quirúrgicos en la noche, rimas como armas, beats como detonadores. Archivo.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3 class="editable" data-key="op3-title">Guerra de raps</h3>
-          <p class="editable" data-key="op3-text">
-            Batallas verbales sin censura. Solo sobreviven los códigos más duros. En vivo.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3 class="editable" data-key="op4-title">Combate brutal</h3>
-          <p class="editable" data-key="op4-text">
-            Sesiones extremas donde el micrófono es la única salida. Subterráneo.
-          </p>
-        </div>
-      </div>
-
-      <!-- 🔥 SLIDER DINÁMICO -->
-      <h2 class="section-subtitle">Galería de Videos</h2>
-
-      <div class="video-slider-container">
-        <button class="slider-btn left-btn">&#10094;</button>
-
-        <div class="video-slider" id="dynamicSlider"></div>
-
-        <button class="slider-btn right-btn">&#10095;</button>
-      </div>
-    </section>
-
-    <!-- Otras pestañas -->
-    <section id="batallas" class="tab-content">
-      <h2 class="section-title">Batallas</h2>
-    </section>
-
-    <section id="archivo" class="tab-content">
-      <h2 class="section-title">Archivo</h2>
-    </section>
-
-    <section id="contacto" class="tab-content">
-      <h2 class="section-title">Contacto</h2>
-
-      <form class="contact-form">
-        <div class="form-group">
-          <label>Nombre</label>
-          <input type="text" />
-        </div>
-
-        <div class="form-group">
-          <label>Mensaje</label>
-          <textarea></textarea>
-        </div>
-
-        <button class="btn-primary">Enviar</button>
-      </form>
-    </section>
-
+  <main>
+    <h2>Bienvenido a Kódigo73</h2>
+    <p>Plataforma de batallas, vídeos y artistas.</p>
   </main>
 
-  <footer class="footer">
-    <span>KODIGO_73 — Plataforma de rap combativo</span>
-    <span>El rap no se toca</span>
-  </footer>
-
-  <script src="app.js"></script>
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>
